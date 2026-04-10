@@ -1,4 +1,5 @@
 import gradio as gr
+from inference import app
 import requests
 
 API_URL = "http://127.0.0.1:7860"
@@ -8,19 +9,19 @@ def reset_env():
     return r.json()
 
 def step_env(action):
-    r = requests.post(API_URL + "/step", json={"action": action})
+    r = requests.post(API_URL + "/step", json={"action": int(action)})
     return r.json()
 
 with gr.Blocks() as demo:
-    gr.Markdown("# 🌍 AI Pollution OpenEnv")
-
+    gr.Markdown("# 🌍 AI Sustainable City OpenEnv")
+    
     btn1 = gr.Button("Reset Environment")
     output1 = gr.Textbox()
 
     btn1.click(reset_env, outputs=output1)
 
-    action = gr.Slider(0, 2, step=1, label="Action (0=none,1=reduce,2=strong)")
-    btn2 = gr.Button("Step Environment")
+    action = gr.Slider(0, 2, step=1, label="Action (0=none, 1=reduce, 2=strong)")
+    btn2 = gr.Button("Run Step")
     output2 = gr.Textbox()
 
     btn2.click(step_env, inputs=action, outputs=output2)

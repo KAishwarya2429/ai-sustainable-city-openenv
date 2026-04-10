@@ -3,27 +3,21 @@ from pydantic import BaseModel
 from openenv import PollutionEnv
 
 app = FastAPI()
-
 env = PollutionEnv()
 
-class ActionRequest(BaseModel):
+class Action(BaseModel):
     action: int
 
 @app.post("/reset")
 def reset():
-    obs = env.reset()
-    return {"observation": obs, "message": "environment reset successful"}
+    return {"state": env.reset()}
 
 @app.post("/step")
-def step(req: ActionRequest):
+def step(req: Action):
     obs, reward, done, info = env.step(req.action)
     return {
-        "observation": obs,
+        "obs": obs,
         "reward": reward,
         "done": done,
         "info": info
     }
-
-@app.get("/")
-def home():
-    return {"status": "OpenEnv running successfully"}
