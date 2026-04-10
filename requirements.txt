@@ -1,0 +1,4 @@
+fastapi
+uvicorn
+gradio==4.44.1
+requests
