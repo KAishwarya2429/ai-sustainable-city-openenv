@@ -1,22 +1,13 @@
-# 🌍 AI Pollution Control OpenEnv
+---
+title: Ai Sustainable City Openenv
+emoji: 🌍
+colorFrom: red
+colorTo: gray
+sdk: gradio
+sdk_version: 6.11.0
+app_file: app.py
+pinned: false
+license: apache-2.0
+---
 
-## Overview
-
-AI agent simulation for pollution control using a reinforcement learning environment.
-
-## Features
-
-- OpenEnv-compatible API
-- Reset + Step endpoints
-- Pollution control simulation
-- Gradio UI for demo
-
-## Run
-
-docker build -t pollution-env .
-docker run -p 7860:7860 pollution-env
-
-## API
-
-- POST /reset
-- POST /step
+Check out the configuration reference at https://huggingface.co/docs/hub/spaces-config-reference
